@@ -16,7 +16,9 @@
 
             <TabItem Header="Graph1">
                 <Grid Background="#FFE5E5E5">
-                    <oxy:PlotView x:Name="Plot1" Model="{Binding PlotModel}"/>
+                    <oxy:PlotView x:Name="Plot1" Model="{Binding PlotModel}">
+                       
+                    </oxy:PlotView>
                 </Grid>
                 
             </TabItem>

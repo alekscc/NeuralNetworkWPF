@@ -114,7 +114,8 @@ namespace NeuralNetworkWPF
 
 
             double err = 1,
-                   errRecord = 1;
+                   errRecord = 1,
+                   validationRecord = 1;
             float[][] ws;
 
             int i = 1;
@@ -153,7 +154,7 @@ namespace NeuralNetworkWPF
 
                     ValidateErr = (float)FeedForward(vdata, ws);
 
-                    Global.Instance.Stats.IndividualRecords.Add(new Record<int, float,float>(Generation, Err,ValidateErr));
+                    
 
                 }
 
@@ -164,6 +165,7 @@ namespace NeuralNetworkWPF
                     Generation = population.GenerationNumber;
                     AvgFit = (float)(fitnessSum / i);
 
+                    Global.Instance.Stats.IndividualRecords.Add(new Record<int, float, float>(Generation-1, Err, ValidateErr));
 
                     sumAllErrs = 0;
                     fitnessSum = 0;
