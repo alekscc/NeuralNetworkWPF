@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,50 @@ namespace NeuralNetworkWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        //MainWindowViewModel viewModel;
+
+        MainWindowViewModel viewModel;
+
         public MainWindow()
         {
+           
             InitializeComponent();
+
+            viewModel = (MainWindowViewModel)DataContext;
+        }
+
+        private void btnStart_Click(object sender, RoutedEventArgs e)
+        {
+            //MessageBox.Show("czekaj");
+            //((MainWindowViewModel)DataContext).StartTraining();
+            //MessageBox.Show("nauczone");
+
+            viewModel.StartTraining();
+        }
+
+        private void btnReset_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.Reset();
+        }
+
+        private void btnStop_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.Stop();
+        }
+
+        private void btnData_Click(object sender, RoutedEventArgs e)
+        {
+            DataWindow wnd = new DataWindow();
+
+            wnd.Show();
+
+        }
+
+        private void btnSettings_Click(object sender, RoutedEventArgs e)
+        {
+            StatisticsWindow wnd = new StatisticsWindow();
+            wnd.Show();
         }
     }
 }

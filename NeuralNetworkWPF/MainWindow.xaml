@@ -5,8 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NeuralNetworkWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="213.936" Width="466" ResizeMode="NoResize"   >
+
+
+
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+
+    </Window.DataContext>
+
+    <Window.Resources>
+        <local:NegateBoolean x:Key="BooleanInverter"/>
+    </Window.Resources>
+
     <Grid>
-        
+
+        <GroupBox x:Name="groupBoxStats" Header="Stats" HorizontalAlignment="Left" Height="112" Margin="10,10,0,0" VerticalAlignment="Top" Width="430">
+            <Grid x:Name="gridStats" HorizontalAlignment="Stretch" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto
+                  ">
+
+                <Label x:Name="labelErr" Content="Err:" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="6,55,362,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="50" MinHeight="25" MaxHeight="25" Height="25"/>
+                <Label x:Name="labelErrOutput" Content="{Binding Path=OutputErr}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="56,55,312,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="50" Height="25" MaxHeight="25" MinHeight="25"/>
+                <Label x:Name="labelMinErr" Content="MinErr:" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="106,55,255,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="57" Height="25" MinHeight="25" MaxHeight="25"/>
+                <Label x:Name="labelMinErrOutput" Content="{Binding Path=OutputMinErr}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="163,55,205,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="50" Height="25" MinHeight="25" MaxHeight="25"/>
+                <Label x:Name="labelGen" Content="Avg Fit:" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="213,55,155,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="50" Height="25" MinHeight="25" MaxHeight="25"/>
+                <Label x:Name="labelGenOutput" Content="{Binding Path=OutputAvgFit}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="263,55,90,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="65" Height="25" MinHeight="25" MaxHeight="25"/>
+                <Label x:Name="labelGen_Copy" Content="Gen:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,55,40,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="50" Height="25" MinHeight="25" MaxHeight="25"/>
+                <Label x:Name="labelGenOutput_Copy" Content="{Binding Path=OutputGen}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="383,55,0,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="35" Height="25" MinHeight="25" MaxHeight="25"/>
+                <Label x:Name="labelErrV" Content="vErr:" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="6,10,362,55" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="50" MinHeight="25" MaxHeight="25" Height="25"/>
+                <Label x:Name="labelErrVOutput" Content="{Binding OutputVErr}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="56,10,312,55" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="50" Height="25" MaxHeight="25" MinHeight="25"/>
+                <Label x:Name="labelErr_Copy" Content="Err:" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="6,55,362,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="50" MinHeight="25" MaxHeight="25" Height="25"/>
+                <Label x:Name="labelMinErr_Copy" Content="tErr:" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="106,10,255,55" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="57" Height="25" MinHeight="25" MaxHeight="25"/>
+                <Label x:Name="labelMinErrOutput_Copy" Content="{Binding OutputTErr}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="163,10,205,55" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="50" Height="25" MinHeight="25" MaxHeight="25"/>
+                <Label x:Name="labelGen_Copy1" Content="Time:" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="213,10,155,55" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="50" Height="25" MinHeight="25" MaxHeight="25"/>
+                <Label x:Name="labelGenOutput_Copy1" Content="{Binding Path=OutputElapsedTime}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="258,10,90,55" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="70" Height="25" MinHeight="25" MaxHeight="25"/>
+                <Button x:Name="btnReset" IsEnabled="{Binding IsStopped}" Content="Reset" HorizontalAlignment="Left" Margin="333,13,0,0" VerticalAlignment="Top" Width="75" Click="btnReset_Click"/>
+            </Grid>
+        </GroupBox>
+        <Button x:Name="btnStop" IsEnabled="{Binding IsStopped, Converter={StaticResource BooleanInverter}}" Content="Stop" HorizontalAlignment="Left" Margin="128,144,0,0" VerticalAlignment="Top" Width="75" Click="btnStop_Click"/>
+        <Button x:Name="btnStart" IsEnabled="{Binding IsStopped}" Content="Start" HorizontalAlignment="Left" Margin="10,144,0,0" VerticalAlignment="Top" Width="75" Click="btnStart_Click"/>
+        <Button x:Name="btnSettings" IsEnabled="{Binding IsStopped}" Content="Settings" HorizontalAlignment="Left" Margin="249,144,0,0" VerticalAlignment="Top" Width="75" Click="btnSettings_Click"/>
+        <Button x:Name="btnData" IsEnabled="{Binding IsStopped}" Content="Data" HorizontalAlignment="Left" Margin="365,144,0,0" VerticalAlignment="Top" Width="75" Click="btnData_Click"/>
     </Grid>
 </Window>
