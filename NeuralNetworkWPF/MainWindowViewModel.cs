@@ -35,7 +35,7 @@ namespace NeuralNetworkWPF
         
         public void SetupNeuralNetwork()
         {
-            nn = new NeuralNetwork(new int[] { 21, 5, 2 }) { UpdateCallback = NotifyAllOutputs, FinalizeCallback = Stop };
+            nn = new NeuralNetwork(Global.Instance.Settings.Layers) { UpdateCallback = NotifyAllOutputs, FinalizeCallback = Stop };
 
 
             //nn.SetCallBack(NotifyAllOutputs);
@@ -75,7 +75,7 @@ namespace NeuralNetworkWPF
             float[][] vdata = File.ReadLines(Global.Instance.Settings.ValidateDataPath).Select(line => line.Split(';')).Select(x => x.Select(y => float.Parse(y)).ToArray()).ToArray();
             float[][] tdata = File.ReadLines(Global.Instance.Settings.TestDataPath).Select(line => line.Split(';')).Select(x => x.Select(y => float.Parse(y)).ToArray()).ToArray();
 
-            thread = new Thread(()=>nn.Train(ldata, vdata,tdata,0.03));
+            thread = new Thread(()=>nn.Train(ldata, vdata,tdata,Global.Instance.Settings.MinErr));
             thread.IsBackground = true;
             thread.Start();
 

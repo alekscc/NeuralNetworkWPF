@@ -46,7 +46,9 @@ namespace NeuralNetworkWPF
 
             PlotModel = new PlotModel();
 
-            PlotModel.LegendTitle = "Legend";
+           
+
+            PlotModel.LegendTitle = "Legenda";
             PlotModel.LegendOrientation = LegendOrientation.Horizontal;
             PlotModel.LegendPosition = LegendPosition.TopRight;
             PlotModel.LegendBackground = OxyColor.FromAColor(200, OxyColors.White);
@@ -55,11 +57,11 @@ namespace NeuralNetworkWPF
             //var dateAxis = new DateTimeAxis() { MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot, IntervalLength = 80 };
             //dateAxis.Title = "Rok";
 
-            var genAxis = new LinearAxis() { Position = AxisPosition.Bottom, Title = "Generation", MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot };
+            var genAxis = new LinearAxis() { Position = AxisPosition.Bottom, Title = "Generacja", MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot };
 
 
 
-            var errAxis = new LinearAxis() { Position = AxisPosition.Left, Title = "Error", MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot };
+            var errAxis = new LinearAxis() { Position = AxisPosition.Left, Title = "Błąd", MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot };
 
 
 
@@ -92,6 +94,7 @@ namespace NeuralNetworkWPF
                 LineStyle = LineStyle.Solid,
                 CanTrackerInterpolatePoints = true,
                 LineJoin = LineJoin.Round,
+                Title="Dane uczące",
                 //InterpolationAlgorithm = InterpolationAlgorithms.ChordalCatmullRomSpline,
             };
 
@@ -101,6 +104,7 @@ namespace NeuralNetworkWPF
                 LineStyle = LineStyle.Solid,
                 CanTrackerInterpolatePoints = true,
                 LineJoin = LineJoin.Round,
+                Title="Dane walidacyjne",
                 //InterpolationAlgorithm = InterpolationAlgorithms.ChordalCatmullRomSpline,
             };
 
@@ -120,6 +124,9 @@ namespace NeuralNetworkWPF
             PlotModel.Axes.Add(errAxis);
 
 
+            string fileName = Global.Instance.Settings.MinErr + "_" + Global.Instance.Settings.PopulationSize;
+
+            OxyPlot.Wpf.PngExporter.Export(PlotModel, "graphs/"+fileName+".png", 600, 400, OxyColors.White);
 
         }
     }

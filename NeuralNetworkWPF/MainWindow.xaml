@@ -39,7 +39,7 @@
                 <Label x:Name="labelMinErrOutput_Copy" Content="{Binding OutputTErr}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="163,10,205,55" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="50" Height="25" MinHeight="25" MaxHeight="25"/>
                 <Label x:Name="labelGen_Copy1" Content="Time:" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="213,10,155,55" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="50" Height="25" MinHeight="25" MaxHeight="25"/>
                 <Label x:Name="labelGenOutput_Copy1" Content="{Binding Path=OutputElapsedTime}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="258,10,90,55" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="70" Height="25" MinHeight="25" MaxHeight="25"/>
-                <Button x:Name="btnReset" IsEnabled="{Binding IsStopped}" Content="Reset" HorizontalAlignment="Left" Margin="333,13,0,0" VerticalAlignment="Top" Width="75" Click="btnReset_Click"/>
+                <Button x:Name="btnDetails" IsEnabled="{Binding IsStopped}" Content="Details" HorizontalAlignment="Left" Margin="333,13,0,0" VerticalAlignment="Top" Width="75" Click="btnDetails_Click"/>
             </Grid>
         </GroupBox>
         <Button x:Name="btnStop" IsEnabled="{Binding IsStopped, Converter={StaticResource BooleanInverter}}" Content="Stop" HorizontalAlignment="Left" Margin="128,144,0,0" VerticalAlignment="Top" Width="75" Click="btnStop_Click"/>

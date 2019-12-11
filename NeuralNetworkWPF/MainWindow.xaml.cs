@@ -43,10 +43,6 @@ namespace NeuralNetworkWPF
             viewModel.StartTraining();
         }
 
-        private void btnReset_Click(object sender, RoutedEventArgs e)
-        {
-            viewModel.Reset();
-        }
 
         private void btnStop_Click(object sender, RoutedEventArgs e)
         {
@@ -62,6 +58,15 @@ namespace NeuralNetworkWPF
         }
 
         private void btnSettings_Click(object sender, RoutedEventArgs e)
+        {
+            //StatisticsWindow wnd = new StatisticsWindow();
+            //wnd.Show();
+
+            SettingsWindow wnd = new SettingsWindow();
+            wnd.Show();
+        }
+
+        private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
             StatisticsWindow wnd = new StatisticsWindow();
             wnd.Show();

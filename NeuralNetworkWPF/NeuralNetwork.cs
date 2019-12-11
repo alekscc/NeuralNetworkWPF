@@ -85,7 +85,7 @@ namespace NeuralNetworkWPF
             //foreach (int i in ar)
             //    Console.Write(i.ToString() + " ; ");
             // 200
-            population = new Population(200, Utils.ArrayToIntTree<float>(weights));
+            population = new Population(Global.Instance.Settings.PopulationSize, Utils.ArrayToIntTree<float>(weights));
 
         }
         public void Test(float[][] tdata)
