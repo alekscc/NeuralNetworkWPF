@@ -68,14 +68,14 @@ namespace NeuralNetworkWPF
         }
         public void StartTraining()
         {
-
+            Global.Instance.Stats.IndividualRecords.Clear();
             SetupNeuralNetwork();
 
             float[][] ldata  = File.ReadLines(Global.Instance.Settings.LearningDataPath).Select(line => line.Split(';')).Select(x => x.Select(y => float.Parse(y)).ToArray()).ToArray();
             float[][] vdata = File.ReadLines(Global.Instance.Settings.ValidateDataPath).Select(line => line.Split(';')).Select(x => x.Select(y => float.Parse(y)).ToArray()).ToArray();
             float[][] tdata = File.ReadLines(Global.Instance.Settings.TestDataPath).Select(line => line.Split(';')).Select(x => x.Select(y => float.Parse(y)).ToArray()).ToArray();
 
-            thread = new Thread(()=>nn.Train(ldata, vdata,tdata,0.05));
+            thread = new Thread(()=>nn.Train(ldata, vdata,tdata,0.03));
             thread.IsBackground = true;
             thread.Start();
 

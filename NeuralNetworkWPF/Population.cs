@@ -14,7 +14,7 @@ namespace NeuralNetworkWPF
 
         private Individual recordSolution;
         // 0.7
-        private float eliteRate = 0.1f;
+        private float eliteRate = 0.05f;
         private int nElite = 0;
 
         public Population(int n, int[] m)

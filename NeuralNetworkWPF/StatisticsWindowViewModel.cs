@@ -92,7 +92,7 @@ namespace NeuralNetworkWPF
                 LineStyle = LineStyle.Solid,
                 CanTrackerInterpolatePoints = true,
                 LineJoin = LineJoin.Round,
-                InterpolationAlgorithm = InterpolationAlgorithms.ChordalCatmullRomSpline,
+                //InterpolationAlgorithm = InterpolationAlgorithms.ChordalCatmullRomSpline,
             };
 
             var lineSeriesValidation = new LineSeries()
@@ -101,7 +101,7 @@ namespace NeuralNetworkWPF
                 LineStyle = LineStyle.Solid,
                 CanTrackerInterpolatePoints = true,
                 LineJoin = LineJoin.Round,
-                InterpolationAlgorithm = InterpolationAlgorithms.ChordalCatmullRomSpline,
+                //InterpolationAlgorithm = InterpolationAlgorithms.ChordalCatmullRomSpline,
             };
 
             foreach (var item in Global.Instance.Stats.IndividualRecords)
