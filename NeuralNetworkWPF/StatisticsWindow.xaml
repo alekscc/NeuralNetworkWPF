@@ -22,7 +22,9 @@
                 </Grid>
                 
             </TabItem>
-        </TabControl>
 
+            
+        </TabControl>
+        
     </Grid>
 </Window>

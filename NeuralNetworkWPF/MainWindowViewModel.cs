@@ -12,7 +12,7 @@ namespace NeuralNetworkWPF
 {
     class MainWindowViewModel : INotifyPropertyChanged
     {
-        private NeuralNetwork nn;
+        private ANN nn;
         private Thread thread;
         
         private bool isStopped;
@@ -21,9 +21,9 @@ namespace NeuralNetworkWPF
         public float OutputErr { get { return nn.Err; }  }
         public float OutputVErr { get { return nn.ValidateErr; } }
         public float OutputTErr { get { return nn.TestErr; } }
-        public float OutputMinErr { get { return nn.MinErr; } }
-        public float OutputAvgFit { get { return nn.AvgFit; } }
-        public int OutputGen { get { return nn.Generation; } }
+        public float OutputMinErr { get { return nn.MaxErr; } }
+        public float OutputAvgFit { get { return nn.AvgFitness; } }
+        public int OutputGen { get { return nn.GenerationNumber; } }
         public string OutputElapsedTime { get { return String.Format("{0:00}:{1:00}:{2:00}", nn.ElapsedTime.Minutes, nn.ElapsedTime.Seconds, nn.ElapsedTime.Milliseconds/10f); } }
 
         public MainWindowViewModel()
@@ -35,8 +35,16 @@ namespace NeuralNetworkWPF
         
         public void SetupNeuralNetwork()
         {
-            nn = new NeuralNetwork(Global.Instance.Settings.Layers) { UpdateCallback = NotifyAllOutputs, FinalizeCallback = Stop };
+             //nn = new NeuralNetwork(Global.Instance.Settings.Layers) { UpdateCallback = NotifyAllOutputs, FinalizeCallback = Stop };
+            nn = new ANN(Global.Instance.Settings.Layers) { UpdateCallback = NotifyAllOutputs, FinalizeCallback = Stop };
 
+
+            nn.Initialize(Global.Instance.Settings.PopulationSize,
+                            Global.Instance.Settings.MaxErr,
+                            Global.Instance.Settings.ElitismPerc,
+                            Global.Instance.Settings.MutationRate,
+                            Global.Instance.Settings.Selection,
+                            Global.Instance.Settings.Bias);
 
             //nn.SetCallBack(NotifyAllOutputs);
         }
@@ -75,7 +83,7 @@ namespace NeuralNetworkWPF
             float[][] vdata = File.ReadLines(Global.Instance.Settings.ValidateDataPath).Select(line => line.Split(';')).Select(x => x.Select(y => float.Parse(y)).ToArray()).ToArray();
             float[][] tdata = File.ReadLines(Global.Instance.Settings.TestDataPath).Select(line => line.Split(';')).Select(x => x.Select(y => float.Parse(y)).ToArray()).ToArray();
 
-            thread = new Thread(()=>nn.Train(ldata, vdata,tdata,Global.Instance.Settings.MinErr));
+            thread = new Thread(() => nn.Train(ldata, vdata, tdata));
             thread.IsBackground = true;
             thread.Start();
 
@@ -83,9 +91,12 @@ namespace NeuralNetworkWPF
 
   
         }
-        private void ShowStatisticWindow()
+        public void ShowStatisticWindow()
         {
             StatisticsWindow wnd = new StatisticsWindow();
+
+            wnd.FillDataGrid(nn.Outputs);
+
             wnd.Show();
         }
         public void Stop()
@@ -96,6 +107,22 @@ namespace NeuralNetworkWPF
             IsStopped = true;
 
             thread.Abort();
+
+
+            float[][] tdata = File.ReadLines(Global.Instance.Settings.TestDataPath).Select(line => line.Split(';')).Select(x => x.Select(y => float.Parse(y)).ToArray()).ToArray();
+
+            nn.Test(tdata);
+
+            //File.WriteAllLines("data.csv",
+            //ToCsv(nn.Outputs));
+
+        }
+        private static IEnumerable<String> ToCsv<T>(T[][] data, string separator = ",")
+        {
+            for (int i = 0; i < data.Length; ++i)
+                yield return string.Join(separator, Enumerable
+                  .Range(0, data[i].Length)
+                  .Select(j => data[i][j])); // simplest, we don't expect ',' and '"' in the items
         }
         public void Reset()
         {

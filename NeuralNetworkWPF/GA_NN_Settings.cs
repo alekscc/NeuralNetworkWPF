@@ -11,7 +11,7 @@ namespace NeuralNetworkWPF
 
         public enum SelectionMethod
         {
-            Roulette,
+            Ranking,
             Tournament
         };
         public enum CrossoverMethod
@@ -20,11 +20,17 @@ namespace NeuralNetworkWPF
             BLX
         }
 
+
+        public bool IsCrossValidation { get; set; }
+        public int KFoldCrossValidation { get; set; }
+
         public string LearningDataPath { get; set; }
         public string TestDataPath { get; set; }
         public string ValidateDataPath { get; set; }
 
-        public float MinErr { get; set; }
+        public float Bias { get; set; }
+
+        public float MaxErr { get; set; }
         public int PopulationSize { get; set; }
 
         public SelectionMethod Selection { get; set; }
@@ -41,14 +47,19 @@ namespace NeuralNetworkWPF
 
         public GA_NN_Settings()
         {
-            LearningDataPath = "mushrooms2/n_ldata.csv";
-            TestDataPath = "mushrooms2/n_tdata.csv";
-            ValidateDataPath = "mushrooms2/n_vdata.csv";
+            LearningDataPath = "mushrooms2app/n_ldata.csv";
+            TestDataPath = "mushrooms2app/n_tdata.csv";
+            ValidateDataPath = "mushrooms2app/n_vdata.csv";
+
+            IsCrossValidation = true;
+            KFoldCrossValidation = 10;
 
             MutationRate = 0.01f;
             ElitismPerc = 0.05f;
             PopulationSize = 200;
-            MinErr = 0.03f;
+            MaxErr = 0.005f;
+
+            Bias = 1f;
 
             Layers = new int[] { 21, 5, 2 };
 

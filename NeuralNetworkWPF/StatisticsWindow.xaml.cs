@@ -27,5 +27,16 @@ namespace NeuralNetworkWPF
 
 
         }
+        public void FillDataGrid(string[][] data)
+        {
+            //foreach(string[] x in data)
+            //{
+            //    foreach(string y in x)
+            //    {
+            //        dataGrid.
+            //    }
+            //}
+        }
+
     }
 }

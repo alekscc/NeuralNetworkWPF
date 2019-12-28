@@ -68,8 +68,10 @@ namespace NeuralNetworkWPF
 
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
-            StatisticsWindow wnd = new StatisticsWindow();
-            wnd.Show();
+            //StatisticsWindow wnd = new StatisticsWindow();
+            //wnd.Show();
+
+            viewModel.ShowStatisticWindow();
         }
     }
 }

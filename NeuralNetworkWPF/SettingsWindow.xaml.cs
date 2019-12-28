@@ -53,9 +53,10 @@ namespace NeuralNetworkWPF
 
             Global.Instance.Settings.MutationRate = float.Parse(textBoxMutationRate.Text, CultureInfo.InvariantCulture.NumberFormat);
             Global.Instance.Settings.ElitismPerc = float.Parse(textBoxElitismPerc.Text, CultureInfo.InvariantCulture.NumberFormat);
-            Global.Instance.Settings.MinErr = float.Parse(textBoxMinErr.Text, CultureInfo.InvariantCulture.NumberFormat);
+            Global.Instance.Settings.MaxErr = float.Parse(textBoxMaxErr.Text, CultureInfo.InvariantCulture.NumberFormat);
             Global.Instance.Settings.PopulationSize = int.Parse(textBoxPopulationSize.Text);
             Global.Instance.Settings.Layers = Utils.StringToIntArray(textBoxANNStructure.Text);
+            Global.Instance.Settings.Bias = float.Parse(textBoxBias.Text, CultureInfo.InvariantCulture.NumberFormat);
 
             Close();
         }

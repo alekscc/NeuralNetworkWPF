@@ -59,5 +59,25 @@ namespace NeuralNetworkWPF
                 Console.WriteLine("\n+++++++++++++++++++++++++++++");
             }
         }
+        public static T[] SubArray2<T>(T[] array, int i, int n, bool isInverted = false)
+        {
+            int len = array.Length / n;
+
+            T[] sub = new T[len];
+            T[] sub22 = new T[array.Length - len];
+
+            int r1 = len * i,
+                r2 = len * (i + 1);
+
+            for (int j = 0, x = 0, y = 0; j < array.Length; j++)
+            {
+                if (j >= r1 && j < r2)
+                    sub[x++] = array[j];
+                else
+                    sub22[y++] = array[j];
+            }
+
+            return (!isInverted) ? sub : sub22;
+        }
     }
 }

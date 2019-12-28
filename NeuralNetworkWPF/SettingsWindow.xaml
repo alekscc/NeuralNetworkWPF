@@ -24,17 +24,23 @@
         <TextBox x:Name="textBoxPopulationSize" HorizontalAlignment="Left" Height="26" Margin="110,72,0,0" TextWrapping="Wrap" Text="{Binding PopulationSize, Mode=OneWay}" VerticalAlignment="Top" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Label x:Name="labelPopulationSize" Content="Population:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right"/>
 
-        <TextBox x:Name="textBoxMinErr" HorizontalAlignment="Left" Height="26" Margin="110,103,0,0" TextWrapping="Wrap" Text="{Binding MinErr, Mode=OneWay}" VerticalAlignment="Top" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.RowSpan="2"/>
-        <Label x:Name="labelMinErr" Content="MinErr:" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right" Grid.RowSpan="2"/>
-        <ComboBox x:Name="comboBoxSelection" HorizontalAlignment="Left" Margin="110,56,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1">
+        <TextBox x:Name="textBoxMaxErr" HorizontalAlignment="Left" Height="26" Margin="110,103,0,0" TextWrapping="Wrap" Text="{Binding MinErr, Mode=OneWay}" VerticalAlignment="Top" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.RowSpan="2"/>
+        <Label x:Name="labelMaxErr" Content="MaxErr:" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right" Grid.RowSpan="2"/>
+        <ComboBox x:Name="comboBoxSelection" HorizontalAlignment="Left" Margin="110,56,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" >
         </ComboBox>
-        <ComboBox x:Name="comboBoxCrossover" HorizontalAlignment="Left" Margin="110,82,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
-        <Label x:Name="labelSelection" Content="Selection:" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right" Grid.Row="1"/>
-        <Label x:Name="labelCrossover" Content="Crossover:" HorizontalAlignment="Left" Margin="10,82,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right" Grid.Row="1"/>
+        <ComboBox x:Name="comboBoxCrossover" HorizontalAlignment="Left" Margin="110,82,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" Visibility="Hidden"/>
+        <Label x:Name="labelSelection" Content="Selection:" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right" Grid.Row="1" />
+        <Label x:Name="labelCrossover" Content="Crossover:" HorizontalAlignment="Left" Margin="10,82,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right" Grid.Row="1" Visibility="Hidden"/>
         <Label x:Name="labelNNStructure" Content="ANN Structure:" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right" Grid.Row="1"/>
         <TextBox x:Name="textBoxANNStructure" HorizontalAlignment="Left" Height="26" Margin="110,25,0,0" TextWrapping="Wrap" Text="{Binding ANNStructure,Mode=OneWay}" VerticalAlignment="Top" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1"/>
+
         <Button x:Name="btnApply" Content="Apply" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="200,163,0,0" Grid.Row="1" Click="btnApply_Click"/>
         <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,163,0,0" Grid.Row="1" Click="btnCancel_Click"/>
+        <TextBox x:Name="textBoxKFoldCrossValidation" HorizontalAlignment="Left" Height="26" Margin="110,107,0,0" TextWrapping="Wrap" Text="{Binding MinErr, Mode=OneWay}" VerticalAlignment="Top" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" IsEnabled="False" Visibility="Hidden"/>
+        <Label x:Name="labelMinErr_Copy" Content="k-fold:" HorizontalAlignment="Left" Margin="5,108,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right" Grid.Row="1" IsEnabled="False" Visibility="Hidden"/>
+        <CheckBox x:Name="checkBox" IsChecked="{Binding IsCrossValidation}" Content="Cross-validation" HorizontalAlignment="Left" Margin="115,87,0,0" Grid.Row="1" VerticalAlignment="Top" Width="115" IsEnabled="False" Visibility="Hidden"/>
+        <TextBox x:Name="textBoxBias" HorizontalAlignment="Left" Height="26" Margin="110,83,0,0" TextWrapping="Wrap" Text="{Binding Bias, Mode=OneWay}" VerticalAlignment="Top" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1"/>
+        <Label x:Name="labelMinErr_Copy1" Content="Bias:" HorizontalAlignment="Left" Margin="5,82,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right" Grid.Row="1"/>
 
     </Grid>
 </Window>

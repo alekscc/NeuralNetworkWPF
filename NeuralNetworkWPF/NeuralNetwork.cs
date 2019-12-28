@@ -85,7 +85,8 @@ namespace NeuralNetworkWPF
             //foreach (int i in ar)
             //    Console.Write(i.ToString() + " ; ");
             // 200
-            population = new Population(Global.Instance.Settings.PopulationSize, Utils.ArrayToIntTree<float>(weights));
+            //population = new Population(Global.Instance.Settings.PopulationSize, Utils.ArrayToIntTree<float>(weights),Global.Instance.Settings.ElitismPerc,Global.Instance.Settings.MutationRate);
+
 
         }
         public void Test(float[][] tdata)
@@ -107,11 +108,11 @@ namespace NeuralNetworkWPF
            // Utils.ConsoleDisplay2DArray(population.GetRecordSolution().Genes);
 
         }
-        public bool Train(float[][] ldata,float[][] vdata,float[][] tdata, double minErr=0.005,int k = 10)
+        public bool Train(float[][] ldata,float[][] vdata,float[][] tdata, double minErr=0.005)
         {
             Stopwatch stopwatch = new Stopwatch();
 
-
+            bool isDone = false;
 
             double err = 1,
                    errRecord = 1,
@@ -121,7 +122,7 @@ namespace NeuralNetworkWPF
             int i = 1;
             double fitnessSum = 0;
             double sumAllErrs = 0;
-
+            bool isNewRecord = false;
             stopwatch.Start();
             do
             {
@@ -156,22 +157,32 @@ namespace NeuralNetworkWPF
 
                     
 
+                    isNewRecord = true;
+
                 }
 
-                if(population.NextSolution())
+           
+                if(population.NextSolution() || err<=MinErr)
                 {
+                    Generation = population.GenerationNumber;
+                    if (isNewRecord)
+                    {
+                        Global.Instance.Stats.IndividualRecords.Add(new Record<int, float, float>(Generation-1, Err, ValidateErr));
+                        isNewRecord = false;
+                    }
+
                     //Console.ForegroundColor = ConsoleColor.DarkCyan;
                     //Console.WriteLine("Generation: " + population.GenerationNumber + " Avg. Fitness: " + fitnessSum / i +  " Avg. Errs: " + sumAllErrs / i);
-                    Generation = population.GenerationNumber;
+                    
                     AvgFit = (float)(fitnessSum / i);
 
-                    Global.Instance.Stats.IndividualRecords.Add(new Record<int, float, float>(Generation-1, Err, ValidateErr));
+
+    
 
                     sumAllErrs = 0;
                     fitnessSum = 0;
                     i = 1;
 
-               
                 }
 
                 

@@ -45,7 +45,9 @@ namespace NeuralNetworkWPF
         {
 
             PlotModel = new PlotModel();
-
+            int hiddenLayers = Global.Instance.Settings.Layers.Length - 2;
+            PlotModel.Title = "Populacja: " + Global.Instance.Settings.PopulationSize + "; Kryterium stopu: "+Global.Instance.Settings.MaxErr+"; Walidacja krzyżowa: "+ ( (Global.Instance.Settings.IsCrossValidation) ? "Tak" : "Nie" ) + ";\nMutacja: " + Global.Instance.Settings.MutationRate + "; Elitaryzm: "+Global.Instance.Settings.ElitismPerc+"; Warstwy ukryte: "+hiddenLayers;
+            PlotModel.TitleFontSize = 14;
            
 
             PlotModel.LegendTitle = "Legenda";
@@ -57,7 +59,7 @@ namespace NeuralNetworkWPF
             //var dateAxis = new DateTimeAxis() { MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot, IntervalLength = 80 };
             //dateAxis.Title = "Rok";
 
-            var genAxis = new LinearAxis() { Position = AxisPosition.Bottom, Title = "Generacja", MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot };
+            var genAxis = new LinearAxis() { Position = AxisPosition.Bottom, Title = "Generacja [numer]", MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot };
 
 
 
@@ -90,7 +92,7 @@ namespace NeuralNetworkWPF
 
             var lineSeriesLearning = new LineSeries()
             {
-                Color = OxyColors.Green,
+                Color = OxyColors.Red,
                 LineStyle = LineStyle.Solid,
                 CanTrackerInterpolatePoints = true,
                 LineJoin = LineJoin.Round,
@@ -100,7 +102,7 @@ namespace NeuralNetworkWPF
 
             var lineSeriesValidation = new LineSeries()
             {
-                Color = OxyColors.Aqua,
+                Color = OxyColors.Green,
                 LineStyle = LineStyle.Solid,
                 CanTrackerInterpolatePoints = true,
                 LineJoin = LineJoin.Round,
@@ -124,7 +126,7 @@ namespace NeuralNetworkWPF
             PlotModel.Axes.Add(errAxis);
 
 
-            string fileName = Global.Instance.Settings.MinErr + "_" + Global.Instance.Settings.PopulationSize;
+            string fileName = Global.Instance.Settings.MaxErr + "_" + Global.Instance.Settings.PopulationSize;
 
             OxyPlot.Wpf.PngExporter.Export(PlotModel, "graphs/"+fileName+".png", 600, 400, OxyColors.White);
 
