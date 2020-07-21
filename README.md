@@ -1,6 +1,7 @@
 # NeuralNetworkWPF
 
 Implementation of artificial neural network with genetic algorithm.
+C# and WPF
 
 ![alt text](https://github.com/alekscc/NeuralNetworkWPF/blob/master/NeuralNetworkWPF/Screens/mainwindow.png "Main window")
 
