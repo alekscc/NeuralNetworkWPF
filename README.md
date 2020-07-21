@@ -1,5 +1,7 @@
 # NeuralNetworkWPF
 
+Implementation of artificial neural network with genetic algorithm.
+
 ![alt text](https://github.com/alekscc/NeuralNetworkWPF/blob/master/NeuralNetworkWPF/Screens/mainwindow.png "Main window")
 
 ![alt text](https://github.com/alekscc/NeuralNetworkWPF/blob/master/NeuralNetworkWPF/Screens/settings.png "Settings")
