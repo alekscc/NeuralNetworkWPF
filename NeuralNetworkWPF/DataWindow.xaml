@@ -5,20 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NeuralNetworkWPF"
         mc:Ignorable="d"
-        Title="DataWindow" Height="274.238" Width="812.465" ResizeMode="NoResize">
+        Title="DataWindow" Height="185.238" Width="812.465" ResizeMode="NoResize">
     <Grid>
         <TextBox x:Name="textBoxDataL" HorizontalAlignment="Left" Height="23" Margin="30,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="672"/>
         <Button x:Name="btnBrowseDataL" Content="Browse" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="707,33,0,0" RenderTransformOrigin="0.559,0.929" Height="23" Click="btnBrowseDataL_Click"/>
         <Label x:Name="label" Content="Learning data" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top" Width="672"/>
-        
-        <Label x:Name="label_Copy1" Content="Validate data" HorizontalAlignment="Left" Margin="30,61,0,0" VerticalAlignment="Top" Width="672"/>
-        <TextBox x:Name="textBoxDataV" HorizontalAlignment="Left" Height="23" Margin="30,92,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="672"/>
-        <Button x:Name="btnBrowseDataV" Content="Browse" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="707,92,0,0" RenderTransformOrigin="0.559,0.929" Height="23" Click="btnBrowseDataV_Click"/>
-        
-        <Label x:Name="label_Copy2" Content="Test data" HorizontalAlignment="Left" Margin="30,120,0,0" VerticalAlignment="Top" Width="672"/>
-        <TextBox x:Name="textBoxDataT" HorizontalAlignment="Left" Height="23" Margin="30,151,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="672"/>
-        <Button x:Name="btnBrowseDataT" Content="Browse" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="707,151,0,0" RenderTransformOrigin="0.559,0.929" Height="23" Click="btnBrowseDataT_Click"/>
-        <Button x:Name="btnApply" Content="Apply" HorizontalAlignment="Left" Margin="707,197,0,0" VerticalAlignment="Top" Width="75" Click="btnApply_Click"/>
-        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="627,197,0,0" VerticalAlignment="Top" Width="75" Click="btnCancel_Click"/>
+
+        <Label x:Name="label_Copy1" Content="Validate data" HorizontalAlignment="Left" Margin="30,61,0,0" VerticalAlignment="Top" Width="672" Visibility="Hidden"/>
+        <TextBox x:Name="textBoxDataV" HorizontalAlignment="Left" Height="23" Margin="30,92,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="672" Visibility="Hidden"/>
+        <Button x:Name="btnBrowseDataV" Content="Browse" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="707,92,0,0" RenderTransformOrigin="0.559,0.929" Height="23" Click="btnBrowseDataV_Click" Visibility="Hidden"/>
+
+        <Label x:Name="label_Copy2" Content="Test data" HorizontalAlignment="Left" Margin="30,56,0,0" VerticalAlignment="Top" Width="672"/>
+        <TextBox x:Name="textBoxDataT" HorizontalAlignment="Left" Height="23" Margin="30,82,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="672"/>
+        <Button x:Name="btnBrowseDataT" Content="Browse" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="707,82,0,0" RenderTransformOrigin="0.559,0.929" Height="23" Click="btnBrowseDataT_Click"/>
+        <Button x:Name="btnApply" Content="Apply" HorizontalAlignment="Left" Margin="707,120,0,0" VerticalAlignment="Top" Width="75" Click="btnApply_Click"/>
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="627,120,0,0" VerticalAlignment="Top" Width="75" Click="btnCancel_Click"/>
     </Grid>
 </Window>
